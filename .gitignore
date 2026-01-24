@@ -5,6 +5,12 @@ target/
 # Maven
 .mvn/
 
+# Maven / Build
+target/
+
+# Allure
+allure-results/
+
 # IntelliJ
 .idea/
 *.iml
