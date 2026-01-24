@@ -13,11 +13,11 @@ import java.net.URL;
 
 public class DriverFactory {
 
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     public static WebDriver getDriver() {
 
-        if (driver == null) {
+        if (driver.get() == null) {
             try {
                 String execution = ConfigReader.get("execution");
                 String browser = ConfigReader.get("browser");
@@ -31,17 +31,17 @@ public class DriverFactory {
 
                     if ("chrome".equalsIgnoreCase(browser)) {
                         ChromeOptions options = new ChromeOptions();
-                        driver = new RemoteWebDriver(
+                        driver.set(new RemoteWebDriver(
                                 new URL(ConfigReader.get("gridUrl")),
                                 options
-                        );
+                        ));
 
                     } else if ("firefox".equalsIgnoreCase(browser)) {
                         FirefoxOptions options = new FirefoxOptions();
-                        driver = new RemoteWebDriver(
+                        driver.set(new RemoteWebDriver(
                                 new URL(ConfigReader.get("gridUrl")),
                                 options
-                        );
+                        ));
                     }
 
                 } else {
@@ -50,11 +50,11 @@ public class DriverFactory {
 
                     if ("chrome".equalsIgnoreCase(browser)) {
                         WebDriverManager.chromedriver().setup();
-                        driver = new ChromeDriver();
+                        driver.set(new ChromeDriver());
 
                     } else if ("firefox".equalsIgnoreCase(browser)) {
                         WebDriverManager.firefoxdriver().setup();
-                        driver = new FirefoxDriver();
+                        driver.set(new FirefoxDriver());
                     }
                 }
 
@@ -62,13 +62,13 @@ public class DriverFactory {
                 throw new RuntimeException("Failed to initialize WebDriver", e);
             }
         }
-        return driver;
+        return driver.get();
     }
 
     public static void quitDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null;
+        if (driver.get() != null) {
+            driver.get().quit();
+            driver.remove();
         }
     }
 }

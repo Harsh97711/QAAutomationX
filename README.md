@@ -1,16 +1,23 @@
 # QAAutomationX 
+**Enterprise Selenium Automation Framework**
 
-Enterprise-level Selenium Automation Framework built with modern tools and best practices.
+QAAutomationX is a scalable, enterprise-grade automation framework built using **Selenium 4**, **TestNG**, **Java 17**, and **Maven**, with support for **Dockerized Selenium Grid**, **parallel execution**, and **Allure reporting**.  
+Designed to simulate real-world product-company automation standards.
+
+---
 
 ## 🔧 Tech Stack
-- Java 17
-- Selenium 4
-- TestNG
-- Maven
-- Allure Reporting
-- Docker
-- Selenium Grid
-- GitHub
-- Jenkins (CI Ready)
+- **Language:** Java 17
+- **Automation:** Selenium 4
+- **Test Framework:** TestNG
+- **Build Tool:** Maven
+- **Reporting:** Allure Reports
+- **Execution:** Local & Selenium Grid
+- **Containerization:** Docker
+- **CI/CD Ready:** Jenkins
+- **Version Control:** Git & GitHub
+
+---
 
 ## 🏗 Framework Architecture
+
