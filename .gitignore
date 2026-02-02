@@ -17,3 +17,7 @@ allure-results/
 
 # OS
 .DS_Store
+
+# Selenium Grid videos
+docker/videos/
+

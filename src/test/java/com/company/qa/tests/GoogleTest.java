@@ -1,19 +1,20 @@
 package com.company.qa.tests;
 
 import com.company.qa.base.BaseTest;
+import com.company.qa.retry.RetryAnalyzer;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class GoogleTest extends BaseTest {
 
-    @Test
-    public void verifyGoogleTitle() throws InterruptedException {
+    @Test(retryAnalyzer = RetryAnalyzer.class)
+    public void verifyGoogleTitle() {
+
         driver.get("https://www.google.com");
 
-        // 🔴 HOLD SESSION FOR VISIBILITY
-        Thread.sleep(10000);
+        String title = driver.getTitle();
+        System.out.println("Title = " + title);
 
-        Assert.assertTrue(driver.getTitle().contains("Google"));
+        Assert.assertTrue(title.contains("Google"));
     }
-
 }

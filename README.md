@@ -14,7 +14,7 @@ Designed to simulate real-world product-company automation standards.
 - **Reporting:** Allure Reports
 - **Execution:** Local & Selenium Grid
 - **Containerization:** Docker
-- **CI/CD Ready:** Jenkins
+  - **CI/CD Ready:** Jenkins
 - **Version Control:** Git & GitHub
 
 ---
